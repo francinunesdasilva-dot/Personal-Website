@@ -1,0 +1,8 @@
+{
+  "name": "Founder Personal Portfolio",
+  "description": "A sophisticated personal website showcasing lifestyle, interests (travel, art, books, movies), and the beloved dog Floki, featuring an AI-powered conversational assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
