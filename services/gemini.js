@@ -1,6 +1,6 @@
 
-import { GoogleGenAI, Content } from "@google/genai";
-import { FOUNDER_NAME, FOUNDER_TAGLINE, INTERESTS, FLOKI_DETAILS } from "../constants";
+import { GoogleGenAI } from "@google/genai";
+import { FOUNDER_NAME, FOUNDER_TAGLINE, INTERESTS, FLOKI_DETAILS } from "../constants.js";
 
 const getSystemInstruction = () => {
   const interestsString = INTERESTS.map(i => `${i.type}: ${i.title} - ${i.description}`).join('\n');
@@ -23,12 +23,11 @@ const getSystemInstruction = () => {
   `;
 };
 
-export const sendMessageToAI = async (message: string, history: {role: 'user' | 'assistant', content: string}[]) => {
+export const sendMessageToAI = async (message, history) => {
   // Always use a named parameter and direct process.env.API_KEY
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
-  // Use proper Content type and map roles to 'model' for the assistant
-  const contents: Content[] = history.map(h => ({
+  const contents = history.map(h => ({
     role: h.role === 'assistant' ? 'model' : 'user',
     parts: [{ text: h.content }]
   }));
@@ -45,7 +44,7 @@ export const sendMessageToAI = async (message: string, history: {role: 'user' | 
       systemInstruction: getSystemInstruction(),
       temperature: 0.7,
       topP: 0.95,
-      // maxOutputTokens removed to avoid blocking response (follow guidelines)
+      // maxOutputTokens removed to avoid blocking response
     }
   });
 
