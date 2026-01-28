@@ -1,8 +1,6 @@
 
 import { INTERESTS, REFLECTIONS, FLOKI_DETAILS, FOUNDER_NAME } from './constants.js';
 import { sendMessageToAI } from './services/gemini.js';
-// Import ChatMessage type to fix history type mismatch
-import { ChatMessage } from './types.js';
 
 // --- Rendering Logic ---
 
@@ -69,10 +67,10 @@ function renderInterests() {
 }
 
 function renderFloki() {
-  document.getElementById('floki-name').innerText = `Meet ${FLOKI_DETAILS.name}`;
-  document.getElementById('floki-personality').innerText = FLOKI_DETAILS.personality;
-  document.getElementById('floki-meta').innerText = `${FLOKI_DETAILS.breed}, ${FLOKI_DETAILS.age}`;
-  document.getElementById('floki-story').innerText = `"${FLOKI_DETAILS.story}"`;
+  document.getElementById('floki-name')!.innerText = `Meet ${FLOKI_DETAILS.name}`;
+  document.getElementById('floki-personality')!.innerText = FLOKI_DETAILS.personality;
+  document.getElementById('floki-meta')!.innerText = `${FLOKI_DETAILS.breed}, ${FLOKI_DETAILS.age}`;
+  document.getElementById('floki-story')!.innerText = `"${FLOKI_DETAILS.story}"`;
 
   const imgContainer = document.getElementById('floki-images-container');
   if (imgContainer) {
@@ -94,8 +92,7 @@ function renderFloki() {
 
 // --- Chat Widget Logic ---
 
-// Fix: typed chatMessages to prevent history type error in sendMessageToAI (line 180)
-let chatMessages: ChatMessage[] = [
+let chatMessages: any[] = [
   { role: 'assistant', content: `Hi! I'm ${FOUNDER_NAME}'s digital assistant. Ask me anything about my work, lifestyle, or Floki!` }
 ];
 
@@ -134,13 +131,12 @@ function initChatWidget() {
     </div>
   `;
 
-  const chatWindow = document.getElementById('chat-window');
-  const chatMessagesContainer = document.getElementById('chat-messages');
-  const chatForm = document.getElementById('chat-form');
-  // Fix: cast chatInput to HTMLInputElement to fix 'value' property errors (lines 165, 168)
-  const chatInput = document.getElementById('chat-input') as HTMLInputElement;
-  const openBtn = document.getElementById('open-chat');
-  const closeBtn = document.getElementById('close-chat');
+  const chatWindow = document.getElementById('chat-window')!;
+  const chatMessagesContainer = document.getElementById('chat-messages')!;
+  const chatForm = document.getElementById('chat-form')! as HTMLFormElement;
+  const chatInput = document.getElementById('chat-input')! as HTMLInputElement;
+  const openBtn = document.getElementById('open-chat')!;
+  const closeBtn = document.getElementById('close-chat')!;
 
   const updateMessages = () => {
     chatMessagesContainer.innerHTML = chatMessages.map(m => `
@@ -173,7 +169,6 @@ function initChatWidget() {
     chatMessages.push({ role: 'user', content: val });
     updateMessages();
 
-    // Loading indicator
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'flex justify-start';
     loadingDiv.innerHTML = `<div class="bg-gray-100 p-3 rounded-2xl text-black"><div class="flex space-x-1"><div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div><div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-75"></div><div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-150"></div></div></div>`;
@@ -194,7 +189,6 @@ function initChatWidget() {
   updateMessages();
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
   renderInterests();
   renderFloki();
