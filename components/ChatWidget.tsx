@@ -2,11 +2,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { sendMessageToAI } from '../services/gemini';
 import { ChatMessage } from '../types';
+import { FOUNDER_NAME } from '../constants';
 
 const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'assistant', content: "Hi! I'm Alex's digital assistant. Ask me anything about my work, travel, or Floki!" }
+    { role: 'assistant', content: `Hi! I'm ${FOUNDER_NAME}'s digital assistant. Ask me anything about my work, lifestyle, or Floki!` }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +45,7 @@ const ChatWidget: React.FC = () => {
       {isOpen ? (
         <div className="glass w-[350px] md:w-[400px] h-[500px] rounded-2xl shadow-2xl flex flex-col border border-gray-200">
           <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-black rounded-t-2xl text-white">
-            <span className="font-semibold">Ask Alex (AI)</span>
+            <span className="font-semibold">Ask {FOUNDER_NAME} (AI)</span>
             <button onClick={() => setIsOpen(false)} className="text-white hover:text-gray-300">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

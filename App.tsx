@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <a href="#about" className="hover:opacity-60 transition-opacity">About</a>
           <a href="#lifestyle" className="hover:opacity-60 transition-opacity">Lifestyle</a>
           <a href="#floki" className="hover:opacity-60 transition-opacity">Floki</a>
-          <a href="mailto:hello@alexrivers.com" className="hover:opacity-60 transition-opacity">Contact</a>
+          <a href="mailto:hello@franciele.xyz" className="hover:opacity-60 transition-opacity">Contact</a>
         </div>
       </nav>
 
@@ -30,10 +30,10 @@ const App: React.FC = () => {
           </p>
           <div className="flex gap-4">
             <button className="bg-black text-white px-8 py-4 rounded-full text-sm font-medium hover:opacity-80 transition-opacity">
-              Download Manifesto
+              View Projects
             </button>
             <button className="border border-black px-8 py-4 rounded-full text-sm font-medium hover:bg-black hover:text-white transition-all">
-              Latest Work
+              Latest Musings
             </button>
           </div>
         </div>
@@ -80,7 +80,7 @@ const App: React.FC = () => {
                 <div className="space-y-6">
                   {INTERESTS.filter(i => i.type === 'Readings').map(book => (
                     <div key={book.id} className="flex gap-6 items-start p-4 hover:bg-white rounded-2xl transition-colors">
-                      <img src={book.imageUrl} alt={book.title} className="w-20 aspect-[2/3] object-cover shadow-sm" />
+                      <img src={book.imageUrl} alt={book.title} className="w-20 aspect-[2/3] object-cover shadow-sm rounded-md" />
                       <div>
                         <h4 className="font-semibold text-lg">{book.title}</h4>
                         <p className="text-xs text-gray-400 mb-2">{book.meta}</p>
@@ -124,7 +124,7 @@ const App: React.FC = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1.414 1.414 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
                   </div>
                   <span className="font-medium text-gray-700">{FLOKI_DETAILS.breed}, {FLOKI_DETAILS.age}</span>
                 </div>
@@ -154,10 +154,14 @@ const App: React.FC = () => {
         <p className="text-xs font-medium text-gray-400 tracking-widest uppercase mb-4">Crafted with intentionality &middot; 2024</p>
         <h2 className="text-4xl font-bold mb-8 gradient-text">Let's build something meaningful.</h2>
         <div className="flex justify-center gap-6">
-          <a href="#" className="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all">𝕏</a>
-          <a href="#" className="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all">in</a>
-          <a href="#" className="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all">ig</a>
+          <a href="https://franciele.xyz" className="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+          </a>
+          <a href="mailto:hello@franciele.xyz" className="w-10 h-10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-all">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          </a>
         </div>
+        <p className="mt-8 text-sm text-gray-400">franciele.xyz</p>
       </footer>
 
       {/* AI Chat Widget */}
